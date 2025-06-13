@@ -1,0 +1,27 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '6.0.+'
+    id 'eclipse'
+    id 'maven-publish'
+}
+
+group = 'com.example'
+version = '1.0.0'
+archivesBaseName = 'simplefarmingtancompat'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+    implementation fg.deobf("curse.maven:tough-as-nails-246391:4777341")
+    implementation fg.deobf("curse.maven:simple-farming-362563:5071350")
+}
